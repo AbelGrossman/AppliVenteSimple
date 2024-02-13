@@ -5,7 +5,12 @@ public class Order {
     private String deliveryDate;
     private Customer customer;
 
-    public Order(){
+    public Order(Cart cart, Customer customer) {
+        this.customer = customer;
+        this.priceOrder = cart.getCartPrice();
+    }
+
+    public Order() {
         Payment payment = new Payment(customer, customer.creditCard);
     }
 
@@ -49,11 +54,6 @@ public class Order {
         this.customer = customer;
     }
 
-    public Order(Cart cart, Customer customer) {
-        this.customer = customer;
-        this.priceOrder = cart.getCartPrice();
-    }
-
     public class Payment {
         private int idPayment;
         private CreditCard creditCard;
@@ -63,6 +63,5 @@ public class Order {
             this.creditCard = creditCard;
             pricePayment = priceOrder;
         }
-
     }
 }
