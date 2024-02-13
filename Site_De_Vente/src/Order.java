@@ -5,13 +5,13 @@ public class Order {
     private String deliveryDate;
     private Customer customer;
 
-    public Order(Cart cart, Customer customer) {
-        this.customer = customer;
-        this.priceOrder = cart.getCartPrice();
+    public Order(Cart cart) {
+        this.priceOrder = cart.getTotalPrice();
+        this.customer = cart.getCustomer();
     }
 
     public Order() {
-        Payment payment = new Payment(customer, customer.creditCard);
+        Payment payment = new Payment(customer, customer.getCreditCards().get(0));
     }
 
     public int getIdOrder() {
